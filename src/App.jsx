@@ -1,35 +1,29 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-
+import GlobalStyles from "./styles/GlobalStyles";
+import Button from "./ui/Button";
+import Heading from "./ui/Heading";
+import Row from "./ui/Row";
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      <GlobalStyles />
+      <Row>
+        <Row type="horizontal">
+          <Heading as="h1">The Wild Oasis!</Heading>
+          <div>
+            <Heading as="h2">Check in & Out!</Heading>
+            <Button variation='secondary' size='large'>Check In</Button>
+            <Button variation="primary" size="medium">
+              Check Out
+            </Button>
+          </div>
+        </Row>
+        <Row>
+          <Heading as="h3">Forms!</Heading>
+          <Button>Hello World!</Button>
+        </Row>
+      </Row>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
