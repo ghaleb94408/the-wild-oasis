@@ -20,7 +20,6 @@ export default function AppLayout() {
       <Sidebar />
       <Header />
       <Main>
-        <p>layout</p>
         <Outlet />
       </Main>
     </StyledAppLayout>
