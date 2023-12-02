@@ -1,9 +1,8 @@
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import toast from "react-hot-toast";
-import styled from "styled-components";
 
-import { addCabin } from "../../services/apiCabins";
+import { createCabin } from "../../services/apiCabins";
 
 import Button from "../../ui/Button";
 import FileInput from "../../ui/FileInput";
@@ -19,7 +18,7 @@ function CreateCabinForm() {
   // for remote state management
   const queryClient = useQueryClient();
   const { isPending, mutate } = useMutation({
-    mutationFn: addCabin,
+    mutationFn: createCabin,
     onSuccess: () => {
       toast.success("new cabin successfully created");
       // Invalidate state
@@ -34,7 +33,8 @@ function CreateCabinForm() {
     },
   });
   function onSubmit(data) {
-    mutate(data);
+    // console.log({ ...data, image: data.image.at(0) });
+    mutate({ ...data, image: data.image[0] });
   }
   function onError(errors) {
     console.log(errors);
@@ -98,7 +98,12 @@ function CreateCabinForm() {
       </FormRow>
 
       <FormRow label="Cabin photo">
-        <FileInput disabled={isPending} id="image" accept="image/*" />
+        <FileInput
+          disabled={isPending}
+          id="image"
+          accept="image/*"
+          {...register("image", { required: "This field is required" })}
+        />
       </FormRow>
 
       <FormRow>
