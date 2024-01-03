@@ -18,7 +18,6 @@ function BookingTable() {
           <div>Dates</div>
           <div>Status</div>
           <div>Amount</div>
-          <div>TEST</div>
         </Table.Header>
 
         <Table.Body
