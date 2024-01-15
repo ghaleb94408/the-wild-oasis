@@ -18,11 +18,10 @@ function SignupForm() {
     <Form onSubmit={handleSubmit(onSubmit)}>
       <FormRow label="Full name" error={errors?.fullname?.message}>
         <Input
-          dis
           disabled={isSigningup}
           type="text"
           id="fullName"
-          {...register("fullnName", {
+          {...register("fullName", {
             required: "This field is required",
           })}
         />
@@ -76,7 +75,7 @@ function SignupForm() {
 
       <FormRow>
         {/* type is an HTML attribute! */}
-        <Button variation="secondary" type="reset">
+        <Button $variation="secondary" type="reset">
           Cancel
         </Button>
         <Button>Create new user</Button>

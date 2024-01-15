@@ -8,12 +8,10 @@ export function useLogin() {
   const { mutate: login, isPending: isLoggingin } = useMutation({
     mutationFn: (credentials) => loginApi(credentials),
     onSuccess: (user) => {
-      console.log(user.user);
       queryClient.setQueryData(["user"], user.user);
       navigate("/dashboard", { replace: true });
     },
-    onError: (err) => {
-      console.log("Error", err);
+    onError: () => {
       toast.error("Provided email or password are not correct");
     },
   });
