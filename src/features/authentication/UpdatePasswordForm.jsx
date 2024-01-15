@@ -13,7 +13,7 @@ function UpdatePasswordForm() {
   const { updateUser, isUpdating } = useUpdateUser();
 
   function onSubmit({ password }) {
-    updateUser({ password }, { onSuccess: reset });
+    updateUser({ password }, { onSettled: () => reset() });
   }
 
   return (
@@ -31,7 +31,7 @@ function UpdatePasswordForm() {
             required: "This field is required",
             minLength: {
               value: 8,
-              message: "Password needs a minimum of 8 characters",
+              message: "New password needs a minimum of 8 characters",
             },
           })}
         />
